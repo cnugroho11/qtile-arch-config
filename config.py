@@ -110,7 +110,8 @@ keys = [
 
 
     # App keybinding
-    Key([mod], "p", lazy.spawn("dmenu_run"), desc="Show dmenu"),
+    Key([mod], "p", lazy.spawn("j4-dmenu-desktop"), desc="Show dmenu"),
+    Key([mod, "shift"], "p", lazy.spawn("dmenu_run"), desc="Show dmenu"),
     Key([mod], "F1", lazy.spawn("brave"), desc="Brave browser"),
     Key([mod], "e", lazy.spawn("thunar"), desc="Thunar file manager"),
     Key([], "Print", lazy.spawn("scrot '/home/cnugroho/Pictures/Screenshot/Screenshot_%Y%m%d-%H%M%S.png'")),
