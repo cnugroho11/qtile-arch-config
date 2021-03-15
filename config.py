@@ -25,10 +25,7 @@
 # SOFTWARE.
 
 import psutil
-import os
-import subprocess
 
-from libqtile import hook
 from typing import List  # noqa: F401
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
@@ -96,6 +93,12 @@ keys = [
     Key([mod], "r", lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"),
 
+    # monadtall keybinding
+    Key([mod], "i", lazy.layout.grow()),
+    Key([mod], "m", lazy.layout.shrink()),
+    Key([mod], "n", lazy.layout.normalize()),
+    Key([mod], "o", lazy.layout.maximize()),
+
     # Sound
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 5%-")),
@@ -108,6 +111,9 @@ keys = [
 
     # App keybinding
     Key([mod], "p", lazy.spawn("dmenu_run"), desc="Show dmenu"),
+    Key([mod], "F1", lazy.spawn("brave"), desc="Brave browser"),
+    Key([mod], "e", lazy.spawn("thunar"), desc="Thunar file manager"),
+    Key([], "Print", lazy.spawn("scrot '/home/cnugroho/Pictures/Screenshot/Screenshot_%Y%m%d-%H%M%S.png'")),
 
 ]
 
@@ -128,13 +134,19 @@ for i in groups:
         #     desc="move focused window to group {}".format(i.name)),
     ])
 
+
+layout_theme = {"border_width": 4,
+                "margin": 8,
+                "border_focus": "e1acff",
+                "border_normal": "1D2330"
+                }
+
+
 layouts = [
-    layout.MonadTall(
-        margin = 10
-    ),
-    layout.Tile(),
+    layout.MonadTall(**layout_theme),
+    layout.Tile(**layout_theme),
     layout.Columns(border_focus_stack='#d75f5f'),
-    layout.Max(),
+    layout.Max(**layout_theme),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -169,7 +181,7 @@ screens = [
                     padding_y = 5,
                     padding_x = 3,
                     borderwidth = 3,
-                    active = colors[2],
+                    active = colors[3],
                     inactive = colors[2],
                     rounded = False,
                     highlight_color = colors[1],
@@ -269,12 +281,6 @@ mouse = [
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
 main = None  # WARNING: this is deprecated and will be removed soon
-
-@hook.subscribe.startup_once
-def autostart():
-    home = os.path.expanduser('~/.config/qtile/autostart.sh')
-    subprocess.call([home])
-
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
