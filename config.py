@@ -96,8 +96,12 @@ keys = [
     # monadtall keybinding
     Key([mod], "i", lazy.layout.grow()),
     Key([mod], "m", lazy.layout.shrink()),
-    Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "o", lazy.layout.maximize()),
+
+    # Floating keybinding
+    Key([mod, "shift"], "f", lazy.window.toggle_floating(), desc='toggle floating'),
+    Key([mod, "shift"], "m", lazy.window.toggle_fullscreen(), desc='toggle fullscreen'),
+
 
     # Sound
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
@@ -112,9 +116,11 @@ keys = [
     # App keybinding
     Key([mod], "p", lazy.spawn("j4-dmenu-desktop"), desc="Show dmenu"),
     Key([mod, "shift"], "p", lazy.spawn("dmenu_run"), desc="Show dmenu"),
-    Key([mod], "F1", lazy.spawn("brave"), desc="Brave browser"),
     Key([mod], "e", lazy.spawn("thunar"), desc="Thunar file manager"),
     Key([], "Print", lazy.spawn("scrot '/home/cnugroho/Pictures/Screenshot/Screenshot_%Y%m%d-%H%M%S.png'")),
+    Key([mod], "F1", lazy.spawn("brave"), desc="Brave browser"),
+    Key([mod], "F2", lazy.spawn("code"), desc="Visual Studio Code"),
+    Key([mod], "F3", lazy.spawn("telegram-desktop"), desc="Telegram Desktop"),
 
 ]
 
@@ -202,7 +208,7 @@ screens = [
                 ),
                 widget.WindowName(
                     background = colors[0],
-                    padding = 15
+                    padding = 0
                 ),
                 widget.Sep(
                     linewidth = 0,
