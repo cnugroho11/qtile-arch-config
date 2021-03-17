@@ -127,17 +127,27 @@ keys = [
 
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [
+     Group('www'),
+     Group('code', matches=[Match(wm_class=["code"])]),
+     Group('term'),
+     Group('file'),
+     Group('docs', matches=[Match(wm_class=["libreoffice", "libreoffice-writer", "libreoffice-impress", "libreoffice-calc", "xreader"])]),
+     Group('view', matches=[Match(wm_class=["feh"])]),
+     Group('disc', matches=[Match(wm_class=["discord"])]),
+     Group('spot', matches=[Match(wm_class=["Spotify"])]),
+     Group('tele', matches=[Match(wm_class=["telegram-desktop"])])
+]
 
-for i in groups:
+for index, grp in enumerate(groups):
     keys.extend([
         # mod1 + letter of group = switch to group
-        Key([mod], i.name, lazy.group[i.name].toscreen(),
-            desc="Switch to group {}".format(i.name)),
+        Key([mod], str(index+1), lazy.group[grp.name].toscreen(),
+            desc="Switch to group {}".format(grp.name)),
 
         # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
-            desc="Switch to & move focused window to group {}".format(i.name)),
+        Key([mod, "shift"], str(index+1), lazy.window.togroup(grp.name, switch_group=True),
+            desc="Switch to & move focused window to group {}".format(grp.name)),
         # Or, use below if you prefer not to switch to that group.
         # # mod1 + shift + letter of group = move focused window to group
         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
@@ -203,22 +213,23 @@ screens = [
                     foreground = colors[2],
                     background = colors[0]
                 ),
-                widget.Sep(
-                    linewidth = 0,
-                    padding = 40,
-                    foreground = colors[2],
-                    background = colors[0]
-                ),
+                #widget.Sep(
+                #    linewidth = 0,
+                #    padding = 40,
+                #    foreground = colors[2],
+                #    background = colors[0]
+                #),
                 widget.WindowName(
-                    background = colors[0],
-                    padding = 0
+                    max_chars = 20,
+                    background = colors[3],
+                    padding = 10
                 ),
-                widget.Sep(
-                    linewidth = 0,
-                    padding = 40,
-                    foreground = colors[2],
-                    background = colors[0]
-                ),
+                #widget.Sep(
+                #    linewidth = 0,
+                #    padding = 40,
+                #    foreground = colors[2],
+                #    background = colors[0]
+                #),
                 #widget.Chord(
                 #    chords_colors={
                 #        'launch': ("#ff0000", "#ffffff"),
