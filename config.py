@@ -220,7 +220,7 @@ screens = [
                 #    background = colors[0]
                 #),
                 widget.WindowName(
-                    max_chars = 20,
+                    max_chars = 15,
                     background = colors[3],
                     padding = 10
                 ),
