@@ -220,10 +220,13 @@ screens = [
                 #    background = colors[0]
                 #),
                 widget.WindowName(
-                    max_chars = 15,
+                    max_chars = 45,
                     background = colors[3],
                     padding = 10
                 ),
+                #widget.Spacer(
+                #    background = colors[0]
+                #),
                 #widget.Sep(
                 #    linewidth = 0,
                 #    padding = 40,
@@ -255,6 +258,7 @@ screens = [
                     background = colors[7],
                 ),
                 widget.Memory(
+                    format = '{MemUsed:.0f}M',
                     background = colors[7],
                     padding = 10
                 ),  
@@ -265,6 +269,7 @@ screens = [
                     padding = 0
                 ),
                 widget.Battery(
+                    format = '{char} {percent:2.0%}',
                     background = colors[4],
                     padding = 10
                 ),
@@ -275,7 +280,7 @@ screens = [
                 widget.Clock(
                     foreground = colors[2],
                     background = colors[5],
-                    format = "%A, %B %d - %H:%M",
+                    format = "%a, %b %d - %H:%M",
                     padding = 10
                 ),
                 widget.Systray(
