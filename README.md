@@ -2,7 +2,8 @@
 
 This is my qtile config i usually use.
 
-
+![Qtile Screenshot]
+(https://github.com/cnugroho11/qtile-arch-config/blob/master/screenshot/qtile.png)
 
 ## Installation
 
