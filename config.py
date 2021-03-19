@@ -68,16 +68,56 @@ keys = [
         desc="Move window down"),
     Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
 
-    # Grow windows. If current window is on the edge of screen and direction
-    # will be to screen edge - window would shrink.
-    Key([mod, "control"], "Left", lazy.layout.grow_left(),
-        desc="Grow window to the left"),
-    Key([mod, "control"], "Right", lazy.layout.grow_right(),
-        desc="Grow window to the right"),
-    Key([mod, "control"], "Down", lazy.layout.grow_down(),
-        desc="Grow window down"),
-    Key([mod, "control"], "Up", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    
+    # RESIZE UP, DOWN, LEFT, RIGHT
+    Key([mod, "control"], "l",
+        lazy.layout.grow_right(),
+        lazy.layout.grow(),
+        lazy.layout.increase_ratio(),
+        lazy.layout.delete(),
+        ),
+    Key([mod, "control"], "Right",
+        lazy.layout.grow_right(),
+        lazy.layout.grow(),
+        lazy.layout.increase_ratio(),
+        lazy.layout.delete(),
+        ),
+    Key([mod, "control"], "h",
+        lazy.layout.grow_left(),
+        lazy.layout.shrink(),
+        lazy.layout.decrease_ratio(),
+        lazy.layout.add(),
+        ),
+    Key([mod, "control"], "Left",
+        lazy.layout.grow_left(),
+        lazy.layout.shrink(),
+        lazy.layout.decrease_ratio(),
+        lazy.layout.add(),
+        ),
+    Key([mod, "control"], "k",
+        lazy.layout.grow_up(),
+        lazy.layout.grow(),
+        lazy.layout.decrease_nmaster(),
+        ),
+    Key([mod, "control"], "Up",
+        lazy.layout.grow_up(),
+        lazy.layout.grow(),
+        lazy.layout.decrease_nmaster(),
+        ),
+    Key([mod, "control"], "j",
+        lazy.layout.grow_down(),
+        lazy.layout.shrink(),
+        lazy.layout.increase_nmaster(),
+        ),
+    Key([mod, "control"], "Down",
+        lazy.layout.grow_down(),
+        lazy.layout.shrink(),
+        lazy.layout.increase_nmaster(),
+        ),
+
+    Key([mod], "n", lazy.layout.normalize()),
+    Key([mod, "shift"], "space", lazy.layout.flip()),
+
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -95,11 +135,7 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"),
-
-    # monadtall keybinding
-    Key([mod], "i", lazy.layout.grow()),
-    Key([mod], "m", lazy.layout.shrink()),
-    Key([mod], "o", lazy.layout.maximize()),
+ 
 
     # Floating keybinding
     Key([mod, "shift"], "f", lazy.window.toggle_floating(), desc='toggle floating'),
@@ -169,13 +205,13 @@ layout_theme = {"border_width": 4,
 layouts = [
     layout.MonadTall(**layout_theme),
     layout.Tile(**layout_theme),
-    layout.Columns(border_focus_stack='#d75f5f'),
+    #layout.Columns(border_focus_stack='#d75f5f'),
     layout.Max(**layout_theme),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    # layout.MonadWide(),
+    layout.MonadWide(**layout_theme),
     # layout.RatioTile(), 
     # layout.TreeTab(),
     # layout.VerticalTile(),
