@@ -19,7 +19,7 @@ pip install psutil
 pacman -S python-psutil 
 ```
 For rofi theme
-https://github.com/adi1090x/rofi.git
+https://github.com/adi1090x/rofi
 
 ## Usage
 
