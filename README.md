@@ -10,12 +10,16 @@ Arch
 
 ```bash
 pacman -S qtile
-pacman -S pip
+pacman -S python-pip
+pacman -S i3lock
+pacman -S rofi
 
 pip install psutil
 # or
 pacman -S python-psutil 
 ```
+For rofi theme
+https://github.com/adi1090x/rofi.git
 
 ## Usage
 
