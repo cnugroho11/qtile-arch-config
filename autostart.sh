@@ -1,6 +1,6 @@
 #! /bin/bash 
 
-picom --experimental-backends &
+picom -b &
 nitrogen --restore &
 nm-applet &
 blueman-tray &
