@@ -204,14 +204,14 @@ layout_theme = {"border_width": 4,
 
 layouts = [
     layout.MonadTall(**layout_theme),
-    layout.Tile(**layout_theme),
+    #layout.Tile(**layout_theme),
     #layout.Columns(border_focus_stack='#d75f5f'),
-    layout.Max(**layout_theme),
+    #layout.Max(**layout_theme),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadWide(**layout_theme),
+    #layout.MonadWide(**layout_theme),
     # layout.RatioTile(), 
     # layout.TreeTab(),
     # layout.VerticalTile(),
@@ -230,17 +230,17 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(
-                    foreground = colors[2],
-                    background = colors[4],
-                    padding = 5
-                ),
+                #widget.CurrentLayout(
+                #    foreground = colors[2],
+                #    background = colors[4],
+                #    padding = 5
+                #),
                 widget.GroupBox(
                     margin_y = 3,
                     margin_x = 0,
-                    padding_y = 5,
+                    padding_y = 0,
                     padding_x = 3,
-                    borderwidth = 3,
+                    borderwidth = 2,
                     active = colors[3],
                     inactive = colors[2],
                     rounded = False,
