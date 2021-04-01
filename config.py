@@ -240,7 +240,7 @@ screens = [
                     margin_x = 0,
                     padding_y = 0,
                     padding_x = 3,
-                    borderwidth = 2,
+                    borderwidth = 3,
                     active = colors[3],
                     inactive = colors[2],
                     rounded = False,
@@ -260,8 +260,9 @@ screens = [
                 #    background = colors[0]
                 #),
                 widget.WindowName(
-                    max_chars = 45,
-                    background = colors[3],
+                    max_chars = 65,
+                    background = colors[0],
+                    foreground = 'ffb86c',
                     padding = 10
                 ),
                 #widget.Spacer(
@@ -280,30 +281,31 @@ screens = [
                 #    name_transform=lambda name: name.upper(),
                 #),
                 widget.TextBox(
-                    text = " Vol:",
+                    text = " ",
                     foreground = colors[2],
-                    background = colors[1],
+                    background = colors[4],
                     padding = 0
                 ),
                 widget.Volume(
-                    background = colors[1],
+                    background = colors[4],
                     padding = 10
                 ),
                 widget.CPU(
-                    background = colors[7],
+                    format = ' {freq_current}GHz {load_percent}%',
+                    background = colors[5],
                     padding = 10
                 ),
                 widget.TextBox(
-                    text = "MEM",
-                    background = colors[7],
+                    text = "",
+                    background = colors[5],
                 ),
                 widget.Memory(
                     format = '{MemUsed:.0f}M',
-                    background = colors[7],
+                    background = colors[5],
                     padding = 10
                 ),  
                 widget.TextBox(
-                    text = " Batt:",
+                    text = " ",
                     foreground = colors[2],
                     background = colors[4],
                     padding = 0
@@ -314,12 +316,13 @@ screens = [
                     padding = 10
                 ),
                 widget.Net(
-                    background = colors[8],
+                    format = ' {down} ↓↑ {up}',
+                    background = colors[5],
                     padding = 10
                 ),
                 widget.Clock(
                     foreground = colors[2],
-                    background = colors[5],
+                    background = colors[4],
                     format = "%a, %b %d - %H:%M",
                     padding = 10
                 ),
